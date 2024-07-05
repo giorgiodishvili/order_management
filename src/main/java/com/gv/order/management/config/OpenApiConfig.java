@@ -14,8 +14,8 @@ import lombok.RequiredArgsConstructor;
         info =
                 @Info(
                         contact = @Contact(name = "Giorgi Odishvili", email = "odishvili.giorgi@gmail.com"),
-                        description = "OpenApi documentation for User Management",
-                        title = "OpenApi specification - User Management",
+                        description = "OpenApi documentation for Order Management",
+                        title = "OpenApi specification - Order Management",
                         version = "1.0",
                         license = @License(name = "Licence name", url = "https://some-url.com"),
                         termsOfService = "Terms of service"),
