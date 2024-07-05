@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.messaging.Message;
 
 import java.util.function.Consumer;
 
@@ -17,10 +16,10 @@ public class UserUpdatedEventListener {
     private final OrderService orderService;
 
     @Bean
-    public Consumer<Message<UserUpdatedEvent>> userUpdatedEventConsumer() {
+    public Consumer<String> userUpdatedEventConsumer() {
         return event -> {
             log.info("Received [UserUpdatedEvent] event: " + event);
-            orderService.handleUserUpdatedEvent(event.getPayload());
+            orderService.handleUserUpdatedEvent(new UserUpdatedEvent(1L, UserUpdatedEvent.EventType.DELETE));
         };
     }
 }

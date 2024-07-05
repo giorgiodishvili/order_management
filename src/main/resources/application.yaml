@@ -16,18 +16,25 @@ spring:
   cache:
     type: hazelcast
 
+  kafka:
+    bootstrap-servers: PLAINTEXT://localhost:9092
+#    consumer:
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+
   cloud:
     function:
       definition: userUpdatedEventConsumer
     stream:
       kafka:
         binder:
-          brokers: ${spring.kafka.bootstrap-servers:PLAINTEXT://localhost:9092}
+          brokers: ${spring.kafka.bootstrap-servers}
       bindings:
-        input-user-updated-0:
+        userUpdatedEventConsumer-in-0:
           destination: user-updated-event
-          group: ${spring.application.name}-group
-          content-type: application/json
+          group: order-management-group
+#          content-type: application/json
+
 
 userController:
   name: "userController"
@@ -38,4 +45,4 @@ server:
 
 hazelcast:
   network:
-    address: localhost:5701
+    address: ${HAZELCAST_URL:localhost:5701}
