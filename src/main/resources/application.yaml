@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: order_management
+  datasource:
+    url: ${JDBC_URL:jdbc:postgresql://localhost:5432/test}
+    username: ${DB_USERNAME:myuser}
+    password: ${DB_PASSWORD:mypassword}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+  flyway:
+    enabled: true
+    locations: classpath:/db/migration
+    schemas: sale
+  cache:
+    type: hazelcast
+
+  cloud:
+    function:
+      definition: userUpdatedEventConsumer
+    stream:
+      kafka:
+        binder:
+          brokers: ${spring.kafka.bootstrap-servers:PLAINTEXT://localhost:9092}
+      bindings:
+        input-user-updated-0:
+          destination: user-updated-event
+          group: ${spring.application.name}-group
+          content-type: application/json
+
+userController:
+  name: "userController"
+  url: http://localhost:8080
+
+server:
+  port: 8085
+
+hazelcast:
+  network:
+    address: localhost:5701
