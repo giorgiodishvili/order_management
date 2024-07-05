@@ -13,13 +13,9 @@ import lombok.RequiredArgsConstructor;
 @OpenAPIDefinition(
         info =
                 @Info(
-                        contact =
-                                @Contact(
-                                        name = "Alibou",
-                                        email = "contact@aliboucoding.com",
-                                        url = "https://aliboucoding.com/course"),
-                        description = "OpenApi documentation for Spring Security",
-                        title = "OpenApi specification - Alibou",
+                        contact = @Contact(name = "Giorgi Odishvili", email = "odishvili.giorgi@gmail.com"),
+                        description = "OpenApi documentation for User Management",
+                        title = "OpenApi specification - User Management",
                         version = "1.0",
                         license = @License(name = "Licence name", url = "https://some-url.com"),
                         termsOfService = "Terms of service"),
