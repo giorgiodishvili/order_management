@@ -106,4 +106,10 @@ public class OrderControllerApiTest {
     public void testDeleteOrder() throws Exception {
         mockMvc.perform(delete("/api/orders/1")).andExpect(status().isNoContent());
     }
+
+    @Test
+    @WithMockUser(roles = "USER")
+    public void testDeleteOrderByUser() throws Exception {
+        mockMvc.perform(delete("/api/orders/1")).andExpect(status().isForbidden());
+    }
 }
