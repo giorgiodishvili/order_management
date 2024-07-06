@@ -132,6 +132,19 @@ The `Order` class includes a static method `generateDummyOrder` for creating dum
 Order dummyOrder = Order.generateDummyOrder();
 ```
 
+### Access swagger on:
+http://localhost:8085/swagger-ui/index.html
+
+Endpoint for Registration or getting valid token: \
+http://localhost:8080/swagger-ui/index.html#/authentication-controller/register
+
+#### email should be valid
+e.g. example@gmail.com
+#### password password should be valid uppercase, lowercase, a number and special char
+e.g. Password123!
+
+#### Pass returned access_token to AUTHORIZATION header
+
 ## Contribution
 
 Contributions are welcome! Please open an issue or submit a pull request with your changes.
