@@ -16,7 +16,7 @@ public class UserUpdatedEventListener {
     private final OrderService orderService;
 
     @Bean
-    public Consumer<String> userUpdatedEventConsumer() {
+    public Consumer<UserUpdatedEvent> userUpdatedEventConsumer() {
         return event -> {
             log.info("Received [UserUpdatedEvent] event: " + event);
             orderService.handleUserUpdatedEvent(new UserUpdatedEvent(1L, UserUpdatedEvent.EventType.DELETE));

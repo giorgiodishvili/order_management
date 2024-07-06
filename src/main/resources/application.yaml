@@ -17,24 +17,30 @@ spring:
     type: hazelcast
 
   kafka:
-    bootstrap-servers: PLAINTEXT://localhost:9092
-#    consumer:
-#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    bootstrap-servers: http://localhost:9092
 
   cloud:
     function:
       definition: userUpdatedEventConsumer
     stream:
+      function:
+        bindings:
+          userUpdatedEventConsumer-in-0: user-updated
+
       kafka:
         binder:
           brokers: ${spring.kafka.bootstrap-servers}
+        bindings:
+          user-updated:
+            consumer:
+              start-offset: earliest
       bindings:
-        userUpdatedEventConsumer-in-0:
+        user-updated:
+          consumer:
+            concurrency: 1
           destination: user-updated-event
           group: order-management-group
 #          content-type: application/json
-
 
 userController:
   name: "userController"
