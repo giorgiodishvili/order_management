@@ -42,8 +42,8 @@ spring:
           group: order-management-group
 #          content-type: application/json
 
-userController:
-  name: "userController"
+authenticationController:
+  name: "authenticationController"
   url: ${USER_SERVICE_URL:http://localhost:8080}
 
 server:
