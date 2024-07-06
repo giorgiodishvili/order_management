@@ -44,7 +44,7 @@ spring:
 
 userController:
   name: "userController"
-  url: http://localhost:8080
+  url: ${USER_SERVICE_URL:http://localhost:8080}
 
 server:
   port: 8085
