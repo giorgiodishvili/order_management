@@ -131,6 +131,25 @@ The `Order` class includes a static method `generateDummyOrder` for creating dum
 ```java
 Order dummyOrder = Order.generateDummyOrder();
 ```
+### Using Docker Compose
+
+To run the application using Docker Compose, follow these steps:
+
+1. Clone the configuration repository:
+
+   ```bash
+   git clone https://github.com/giorgiodishvili/gv_configuration.git
+   cd gv_configuration
+2. run for SHELL
+```bash
+./build.sh
+
+```
+run for WINDOWS
+```bat
+./build.bat
+
+```
 
 ### Access swagger on:
 http://localhost:8085/swagger-ui/index.html
