@@ -52,3 +52,14 @@ server:
 hazelcast:
   network:
     address: ${HAZELCAST_URL:localhost:5701}
+
+logging:
+  level:
+    org.springframework.web.servlet.DispatcherServlet: DEBUG
+  pattern:
+    level: "%5p [${spring.application.name},%X{traceId:-},%X{spanId:-}]"
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
